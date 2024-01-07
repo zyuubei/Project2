@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset='utf-8' />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Getting started | phina.js</title>
+    </head>
+
+    <body>
+        <div style="width:800px; height:800px; margin: 0 auto;">                
+                <!-- ファイル入出力操作関連のコラム(画面上側) -->
+                <div style="border:1px solid #000000; width:100%; height:5%; ">
+                    <input type="file" id="config_input_button">
+                    <input type="file" id="config_input_button_old">
+                    <input type="button" value="ファイル出力" id="config_output_button">
+                </div>
+                
+                <!-- メイン画面のコラム(画面下側) -->
+                <div style="border:1px solid #000000; width:100%; height:95%; display: flex;">
+
+                    <div style="border:1px solid #000000; width:55%; height:100%;">
+
+                        <!-- 向きボタン -->
+                        <div style="border:1px solid #000000; width:100%; height:4%;  display: flex;">
+                            <br><input type="button" id="frame_view_front" value="正面向き"><br>
+                            <input type="button" id="frame_view_side" value="横向き"><br>
+                            <input type="button" id="frame_view_back" value="後ろ向き"><br>
+                        </div>
+
+                        <!-- フレームのViewer -->
+                        <div style="border:1px solid #000000; width:100%; height:46%;">
+                            <canvas width="100" height="100" id="frame_viewer" style="display:block; margin-left: 22%; margin-top:10%;"></canvas>
+                        </div>
+
+                        <!-- 向きボタン -->
+                        <div style="border:1px solid #000000; width:100%; height:4%;  display: flex;">
+                            <input type="button" id="animation_update" value="アニメ更新"><br>
+                            <input type="button" id="frame_view_stand" value="立ち"><br>
+                            <input type="button" id="frame_view_run" value="走り"><br>
+                            <input type="button" id="frame_view_walk" value="歩き"><br>
+                        </div>
+
+                        <!-- アニメーションのViewer -->
+                        <div style="border:1px solid #000000; width:100%; height:46%;">
+                            <canvas width="100" height="100" id="animation_viewer" style="display:block; margin-left: 22%; margin-top:10%;"></canvas>
+                        </div>
+
+                    </div>
+                    
+                    <!-- フレーム関連のコラム(画面右側) -->
+                    <div style="border:1px solid #000000; width:45%; height:100%;">
+                        <!-- フレーム追加画面 -->
+                        <div id = "frame_add_colum" style="border:1px solid #000000; width:100%; height:4%;">
+                            <input type="button" id="frame_add_button" value="追加">
+                            <input type="button" id="frame_delete_button" value="削除">
+                            <input type="button" id="frame_copy_button" value="コピー">
+                            <input type="button" id="frame_paste_button" value="貼付">
+                        </div>
+                        <div id = "frameListBox" style="width:100%; height:50%; overflow: scroll;">                    
+                            <!-- AnimationEditor.jsから動的に追加する -->
+                        </div>
+                    
+                        <!-- フレームプロパティ画面 -->
+                        <div id = "frame_property_colum" style="border:1px solid #000000; width:100%; height:45%;">
+                            <label>表示フレームカウント</label><input type="number" id="property1" style="width:40px"  oninput="value = value.replace(/[^0-9]+/i,'');"><br><br>
+
+                            <table style="border-collapse: collapse ; width:100%; " >
+                                <tr>
+                                    <th style="text-align:left">部位</th>
+                                    <th style="text-align:left">x</th>
+                                    <th style="text-align:left">y</th>
+                                    <th style="text-align:left">r</th>
+                                </tr>
+                                <tr>
+                                    <td>頭px指定</td>
+                                    <td><input type="number" id="property2_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property2_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property2_r" style="width:35px">°</td>
+                                </tr>
+                                <tr>
+                                    <td>体px指定</td>
+                                    <td><input type="number" id="property3_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property3_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property3_r" style="width:35px">°</td>
+                                </tr>
+                                <tr>
+                                    <td>右手px指定</td>
+                                    <td><input type="number" id="property4_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property4_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property4_r" style="width:35px">°</td>
+
+                                </tr>
+                                <tr>
+                                    <td>左手px指定</td>
+                                    <td><input type="number" id="property5_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property5_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property5_r" style="width:35px">°</td>
+                                </tr>
+                                <tr>
+                                    <td>右足px指定</td>
+                                    <td><input type="number" id="property6_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property6_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property6_r" style="width:35px">°</td>
+                                </tr>
+                                <tr>
+                                    <td>左足px指定</td>
+                                    <td><input type="number" id="property7_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property7_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property7_r" style="width:35px">°</td>
+                                </tr>
+                                <tr>
+                                    <td>オプ1_px指定</td>
+                                    <td><input type="number" id="property8_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property8_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property8_r" style="width:35px">°</td>
+                                </tr>
+                                <tr>
+                                    <td>オプ2_px指定</td>
+                                    <td><input type="number" id="property9_x" style="width:35px">px</td>
+                                    <td><input type="number" id="property9_y" style="width:35px">px</td>
+                                    <td><input type="number" id="property9_r" style="width:35px">°</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </body>
+    
+
+    <!-- アニメーション -->
+    <script src="config/Animation/Animation1/Front.js"></script>
+    <script src="config/Animation/Animation1/Back.js"></script>
+    <script src="config/Animation/Animation1/Left.js"></script>
+    <script src="config/Animation/Animation1/Right.js"></script>
+    <script src="config/Animation/Animation2/Front.js"></script>
+    <script src="config/Animation/Animation2/Back.js"></script>
+    <script src="config/Animation/Animation2/Left.js"></script>
+    <script src="config/Animation/Animation2/Right.js"></script>
+    <script src="config/Animation/Animation3/Front.js"></script>
+    <script src="config/Animation/Animation3/Back.js"></script>
+    <script src="config/Animation/Animation3/Left.js"></script>
+    <script src="config/Animation/Animation3/Right.js"></script>
+
+    <!-- jquery -->    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- phina.js を読み込む -->
+    <script src="http://cdn.rawgit.com/phi-jp/phina.js/v0.2.3/build/phina.js"></script>
+    <script src="js/AnimationEditor/FrameViewer.js"></script>
+    <script src="js/AnimationEditor/AnimationViewer.js"></script>
+
+    <!-- 汎用 -->
+    <script src="js/Common/MySprite.js"></script>
+    <script src="js/Common/ActorSprite.js"></script>
+
+    <!-- HitBox -->    
+    <script src="js/HitBox/HitBox.js"></script>
+    <script src="js/HitBox/HitBoxContainer.js"></script>
+    <script src="js/HitBox/HitBoxBlock.js"></script>
+    <script src="js/HitBox/HitBoxBlockContainer.js"></script>
+
+    <!-- プレイヤー -->
+    <script src="js/Player/Player.js"></script>
+    <script src="js/Player/PlayerAnimation.js"></script>
+    <script src="js/Player/PlayerAnimationContext.js"></script>
+    <script src="js/Player/PlayerManager.js"></script>
+    <script src="js/Player/PlayerSprite.js"></script>
+    <script src="js/Player/PlayerState.js"></script>
+    <script src="js/Player/PlayerStateContext.js"></script>
+
+
+</html>
