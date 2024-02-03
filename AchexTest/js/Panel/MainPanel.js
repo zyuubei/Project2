@@ -18,7 +18,7 @@ phina.define('MainPanel', {
     
     // プレイヤーキャラクター配置 (id, name, 顔画像, 体画像, x, y)
     this.playerManager = PlayerManager('head_chip', 'body_chip');
-    this.playerManager.createWizard('player_1','player1','head_chip', 'body_chip', {x:300, y:300});
+    this.playerManager.createWarrior('player_1','player1','head_chip', 'body_chip', {x:300, y:300});
     this.playerManager.addChildTo(this.map1);
     // プレイヤー1を取得
     this.player1 = this.playerManager.getPlayer('player_1');

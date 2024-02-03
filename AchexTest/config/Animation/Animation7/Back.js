@@ -1,1 +1,0 @@
-var Animation7Back =[{"frameCnt":1,"head_px":{"x":-0.5,"y":1,"rotation":0},"body_px":{"x":7,"y":14,"rotation":0},"rightHand_px":{"x":6,"y":18,"rotation":0},"leftHand_px":{"x":17,"y":20,"rotation":0},"rightLeg_px":{"x":8.5,"y":20,"rotation":0},"leftLeg_px":{"x":13,"y":14,"rotation":0},"option1_px":{"x":-0.5,"y":-2.5,"rotation":0},"option2_px":{"x":0,"y":-2.5,"rotation":0}}]

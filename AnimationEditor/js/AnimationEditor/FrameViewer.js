@@ -549,37 +549,37 @@ phina.define('Frame', {
 
     this.option_depth2_dx = 0;
     this.option_depth2_dy = 32;
-    this.option_depth2_r = 0;
+    this.option_depth2_rotation = 0;
     this.option_depth1_dx = 0;
     this.option_depth1_dy = 32;
-    this.option_depth1_r = 0;
+    this.option_depth1_rotation = 0;
     this.body_dx = 0;
     this.body_dy = 0;
-    this.body_r = 0;
+    this.body_rotation = 0;
     this.head_dx = 0;
     this.head_dy = 0;
-    this.head_r = 0;
+    this.head_rotation = 0;
     this.arm_right_dx = 0;
     this.arm_right_dy = 16;
-    this.arm_right_r = 0;
+    this.arm_right_rotation = 0;
     this.arm_left_dx = 0;
     this.arm_left_dy = 24;
-    this.arm_left_r = 0;
+    this.arm_left_rotation = 0;
     this.leg_right_dx = 32;
     this.leg_right_dy = 16;
-    this.leg_right_r = 0;
+    this.leg_right_rotation = 0;
     this.leg_left_dx = 32;
     this.leg_left_dy = 24;
-    this.leg_left_r = 0;
+    this.leg_left_rotation = 0;
 
-    this.option_depth2  = FrameSprite(c_head,"option_depth2",1,1,this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_r).addChildTo(this);  // オプション(奥)
-    this.option_depth1  = FrameSprite(c_head,"option_depth1",1,1,this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_r).addChildTo(this);  // オプション(手前)
-    this.body           = FrameSprite(c_body,"body",1,1,this.body_dx,this.body_dy,16,16,this.body_r).addChildTo(this);            // 体
-    this.head           = FrameSprite(c_head,"head",1,1,this.head_dx,this.head_dy,32,32,this.head_r).addChildTo(this);            // 頭
-    this.arm_right      = FrameSprite(c_body,"arm_right",1,1,this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_r).addChildTo(this);        // 右腕
-    this.arm_left       = FrameSprite(c_body,"arm_left",1,1,this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_r).addChildTo(this);         // 左腕
-    this.leg_right      = FrameSprite(c_body,"leg_right",1,1,this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_r).addChildTo(this);       // 右足
-    this.leg_left       = FrameSprite(c_body,"leg_left",1,1,this.leg_left_dx,this.leg_left_dy,8,8,this.leg_left_r).addChildTo(this);        // 左足
+    this.option_depth2  = FrameSprite(c_head,"option_depth2",1,1,this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_rotation).addChildTo(this);  // オプション(奥)
+    this.option_depth1  = FrameSprite(c_head,"option_depth1",1,1,this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_rotation).addChildTo(this);  // オプション(手前)
+    this.body           = FrameSprite(c_body,"body",1,1,this.body_dx,this.body_dy,16,16,this.body_rotation).addChildTo(this);            // 体
+    this.head           = FrameSprite(c_head,"head",1,1,this.head_dx,this.head_dy,32,32,this.head_rotation).addChildTo(this);            // 頭
+    this.arm_right      = FrameSprite(c_body,"arm_right",1,1,this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_rotation).addChildTo(this);        // 右腕
+    this.arm_left       = FrameSprite(c_body,"arm_left",1,1,this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_rotation).addChildTo(this);         // 左腕
+    this.leg_right      = FrameSprite(c_body,"leg_right",1,1,this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_rotation).addChildTo(this);       // 右足
+    this.leg_left       = FrameSprite(c_body,"leg_left",1,1,this.leg_left_dx,this.leg_left_dy,8,8,this.leg_left_rotation).addChildTo(this);        // 左足
     
     this.frameHtmlObj   = $('#frameNum_' + String(frameID));
     this.frameHtmlObj.on('click', this.Selected.bind(this));
@@ -611,14 +611,14 @@ phina.define('Frame', {
     }else{
       this.walkFront();
     }
-    this.option_depth2.setScreenPos_NoPos(this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_r);
-    this.option_depth1.setScreenPos_NoPos(this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_r);
-    this.body.setScreenPos_NoPos(this.body_dx,this.body_dy,16,16,this.body_r);
-    this.head.setScreenPos_NoPos(this.head_dx,this.head_dy,32,32,this.head_r);
-    this.arm_right.setScreenPos_NoPos(this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_r);
-    this.arm_left.setScreenPos_NoPos(this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_r);
-    this.leg_right.setScreenPos_NoPos(this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_r);
-    this.leg_left.setScreenPos_NoPos(this.leg_left_dx,this.leg_left_dy,8,8,this.leg_left_r);
+    this.option_depth2.setScreenPos_NoPos(this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_rotation);
+    this.option_depth1.setScreenPos_NoPos(this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_rotation);
+    this.body.setScreenPos_NoPos(this.body_dx,this.body_dy,16,16,this.body_rotation);
+    this.head.setScreenPos_NoPos(this.head_dx,this.head_dy,32,32,this.head_rotation);
+    this.arm_right.setScreenPos_NoPos(this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_rotation);
+    this.arm_left.setScreenPos_NoPos(this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_rotation);
+    this.leg_right.setScreenPos_NoPos(this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_rotation);
+    this.leg_left.setScreenPos_NoPos(this.leg_left_dx,this.leg_left_dy,8,8,this.leg_left_rotation);
     
     var newList = new Array();
     if(this.viewObj.nowState==0){
@@ -689,6 +689,7 @@ phina.define('Frame', {
       }
     } 
     this.children = newList;
+
   },
 
   LookSide: function(){
@@ -700,14 +701,14 @@ phina.define('Frame', {
       this.walkSide();
     }
 
-    this.option_depth2.setScreenPos_NoPos(this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_r);
-    this.option_depth1.setScreenPos_NoPos(this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_r);
-    this.body.setScreenPos_NoPos(this.body_dx,this.body_dy,16,16,this.body_r);
-    this.head.setScreenPos_NoPos(this.head_dx,this.head_dy,32,32,this.head_r);
-    this.arm_right.setScreenPos_NoPos(this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_r);
-    this.arm_left.setScreenPos_NoPos(this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_r);
-    this.leg_right.setScreenPos_NoPos(this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_r);
-    this.leg_left.setScreenPos_NoPos(this.leg_left_dx,this.leg_left_dy,8,8,this.leg_left_r);
+    this.option_depth2.setScreenPos(this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_rotation);
+    this.option_depth1.setScreenPos_NoPos(this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_rotation);
+    this.body.setScreenPos_NoPos(this.body_dx,this.body_dy,16,16,this.body_rotation);
+    this.head.setScreenPos_NoPos(this.head_dx,this.head_dy,32,32,this.head_rotation);
+    this.arm_right.setScreenPos_NoPos(this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_rotation);
+    this.arm_left.setScreenPos_NoPos(this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_rotation);
+    this.leg_right.setScreenPos_NoPos(this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_rotation);
+    this.leg_left.setScreenPos_NoPos(this.leg_left_dx,this.leg_left_dy,8,8,this.leg_lef_rotation);
 
 
     var newList = new Array();
@@ -791,14 +792,16 @@ phina.define('Frame', {
     }else{
       this.walkBack();
     }
-    this.option_depth2.setScreenPos_NoPos(this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_r);
-    this.option_depth1.setScreenPos_NoPos(this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_r);
-    this.body.setScreenPos_NoPos(this.body_dx,this.body_dy,16,16,this.body_r);
-    this.head.setScreenPos_NoPos(this.head_dx,this.head_dy,32,32,this.head_r);
-    this.arm_right.setScreenPos_NoPos(this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_r);
-    this.arm_left.setScreenPos_NoPos(this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_r);
-    this.leg_right.setScreenPos_NoPos(this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_r);
-    this.leg_left.setScreenPos_NoPos(this.leg_left_dx,this.leg_left_dy,8,8,this.leg_left_r);
+    console.log(this.arm_right_rotation);
+
+    this.option_depth2.setScreenPos_NoPos(this.option_depth2_dx,this.option_depth2_dy,32,32,this.option_depth2_rotation);
+    this.option_depth1.setScreenPos_NoPos(this.option_depth1_dx,this.option_depth1_dy,32,32,this.option_depth1_rotation);
+    this.body.setScreenPos_NoPos(this.body_dx,this.body_dy,16,16,this.body_rotation);
+    this.head.setScreenPos_NoPos(this.head_dx,this.head_dy,32,32,this.head_rotation);
+    this.arm_right.setScreenPos_NoPos(this.arm_right_dx,this.arm_right_dy,8,8,this.arm_right_rotation);
+    this.arm_left.setScreenPos_NoPos(this.arm_left_dx,this.arm_left_dy,8,8,this.arm_left_rotation);
+    this.leg_right.setScreenPos_NoPos(this.leg_right_dx,this.leg_right_dy,8,8,this.leg_right_rotation);
+    this.leg_left.setScreenPos_NoPos(this.leg_left_dx,this.leg_left_dy,8,8,this.leg_left_rotation);
 
 
     var newList = new Array();
@@ -871,6 +874,9 @@ phina.define('Frame', {
     } 
 
     this.children = newList;
+
+    this.viewObj.SetPropertyDataFromFrame(this);
+
   },
 
   standFront:function(){
@@ -891,6 +897,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 32;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   standSide:function(){
@@ -911,6 +925,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 48;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   standBack:function(){
@@ -931,6 +953,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 56;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   runFront:function(){
@@ -951,6 +981,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 32;
     this.leg_left_dy = 16;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   runSide:function(){
@@ -971,6 +1009,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 48;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   runBack:function(){
@@ -991,6 +1037,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 56;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   walkFront:function(){
@@ -1011,6 +1065,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 32;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   walkSide:function(){
@@ -1031,6 +1093,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 48;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   walkBack:function(){
@@ -1051,6 +1121,14 @@ phina.define('Frame', {
     this.leg_right_dy = 16;
     this.leg_left_dx = 56;
     this.leg_left_dy = 24;
+    this.option_depth2_rotation = this.option_depth2.rotation;
+    this.option_depth1_rotation = this.option_depth1.rotation;
+    this.body_rotation = this.body.rotation;
+    this.head_rotation = this.head.rotation;
+    this.arm_right_rotation = this.arm_right.rotation;
+    this.arm_left_rotation = this.arm_left_rotation;
+    this.leg_right_rotation = this.leg_right.rotation;
+    this.leg_left_rotation = this.leg_left.rotation;
   },
 
   SetFrameDataFromProperty:function(){
@@ -1194,10 +1272,9 @@ phina.define('FrameSprite', {
   },
 
   setScreenPos_NoPos: function(dx, dy, dw, dh, r){
+    this.rotation = r;
     this.srcRect.x = dx;    
     this.srcRect.y = dy;
-    this.r = r;
-    this.rotation = r;
     this.width = dw;
     this.height = dh;
   },
@@ -1306,7 +1383,6 @@ phina.define('ReadConfigFileOld', {
   },
 
   Read: function(e) {
-    console.log("call");
     var profile = e.target.files[0];
     var filename = profile.name;
     var type = profile.type;
@@ -1404,14 +1480,14 @@ phina.define('WriteConfigFile', {
     for(let i = 0; i < this.viewObj.frameList.length; i++){
         var frameData = this.viewObj.frameList[i];
         var frameCnt = frameData.frameCnt;
-        var head_px = {"x": frameData.head.x, "y": frameData.head.y, "rotation": frameData.head.rotation};
-        var body_px = {"x": frameData.body.x, "y": frameData.body.y, "rotation": frameData.body.rotation};
-        var rightHand_px = {"x": frameData.arm_right.x, "y": frameData.arm_right.y, "rotation": frameData.arm_right.rotation};
-        var leftHand_px = {"x": frameData.arm_left.x, "y": frameData.arm_left.y, "rotation": frameData.arm_left.rotation};
-        var rightLeg_px = {"x": frameData.leg_right.x, "y": frameData.leg_right.y, "rotation": frameData.leg_right.rotation};
-        var leftLeg_px = {"x": frameData.leg_left.x, "y": frameData.leg_left.y, "rotation": frameData.leg_left.rotation};
-        var option1_px = {"x": frameData.option_depth1.x, "y": frameData.option_depth1.y, "rotation": frameData.option_depth1.rotation};
-        var option2_px = {"x": frameData.option_depth2.x, "y": frameData.option_depth2.y, "rotation": frameData.option_depth2.rotation};
+        var head_px = {"x": Number(frameData.head.x), "y": Number(frameData.head.y), "rotation": Number(frameData.head.rotation)};
+        var body_px = {"x": Number(frameData.body.x), "y": Number(frameData.body.y), "rotation": Number(frameData.body.rotation)};
+        var rightHand_px = {"x": Number(frameData.arm_right.x), "y": Number(frameData.arm_right.y), "rotation": Number(frameData.arm_right.rotation)};
+        var leftHand_px = {"x": Number(frameData.arm_left.x), "y": Number(frameData.arm_left.y), "rotation": Number(frameData.arm_left.rotation)};
+        var rightLeg_px = {"x": Number(frameData.leg_right.x), "y": Number(frameData.leg_right.y), "rotation": Number(frameData.leg_right.rotation)};
+        var leftLeg_px = {"x": Number(frameData.leg_left.x), "y": Number(frameData.leg_left.y), "rotation": Number(frameData.leg_left.rotation)};
+        var option1_px = {"x": Number(frameData.option_depth1.x), "y": Number(frameData.option_depth1.y), "rotation": Number(frameData.option_depth1.rotation)};
+        var option2_px = {"x": Number(frameData.option_depth2.x), "y": Number(frameData.option_depth2.y), "rotation": Number(frameData.option_depth2.rotation)};
         var data = {"frameCnt":frameCnt,"head_px":head_px,"body_px":body_px,"rightHand_px":rightHand_px,"leftHand_px":leftHand_px,"rightLeg_px":rightLeg_px,"leftLeg_px":leftLeg_px,"option1_px":option1_px,"option2_px":option2_px};
         this.ObjectData.push(data);
     }

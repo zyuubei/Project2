@@ -1,0 +1,1 @@
+var SwordAttack4Right = [{"frameCnt":10,"head_px":{"x":-3,"y":1,"rotation":0},"body_px":{"x":7,"y":13.5,"rotation":0},"rightHand_px":{"x":10,"y":21,"rotation":45},"leftHand_px":{"x":17,"y":22,"rotation":0},"rightLeg_px":{"x":13,"y":22,"rotation":0},"leftLeg_px":{"x":10,"y":24,"rotation":0},"option1_px":{"x":-2,"y":2,"rotation":0},"option2_px":{"x":-2,"y":2,"rotation":0}}]

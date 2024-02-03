@@ -13,6 +13,8 @@ phina.define('PlayerStateContextParent', {
     this._guardWalk   = PlayerState5(playerObj);
     this._jump        = PlayerState6(playerObj);
     this._sliding     = PlayerState7(playerObj);
+
+
     this.currentState = this._standState;         // 現在ステート
 
     // ステートのdictionary
@@ -98,6 +100,11 @@ phina.define('WarriorStateContext', {
     this._guardWalk   = PlayerState5(playerObj);
     this._jump        = PlayerState6(playerObj);
     this._sliding     = PlayerState7(playerObj);
+    this._swordAttack1= PlayerState8(playerObj);
+    this._swordAttack2= PlayerState9(playerObj);
+    this._swordAttack3= PlayerState10(playerObj);
+    this._swordAttack4= PlayerState11(playerObj);
+
     this.currentState = this._standState;     // 現在ステート
 
     // ステートのdictionary
@@ -108,7 +115,11 @@ phina.define('WarriorStateContext', {
       guardStand:this._guardStand,
       guardWalk:this._guardWalk,
       jump:this._jump,
-      sliding:this._sliding
+      sliding:this._sliding,
+      swordAttack1:this._swordAttack1,
+      swordAttack2:this._swordAttack2,
+      swordAttack3:this._swordAttack3,
+      swordAttack4:this._swordAttack4
     };
   },
 
@@ -354,6 +365,7 @@ phina.define('PlayerState1', {
   },
   // zキー
   z_keydown: function(app){
+    this.playerObj.transferState("swordAttack1");
   },
   // xキー
   x_keydown: function(app){
@@ -426,6 +438,7 @@ phina.define('PlayerState2', {
   },
   // zキー
   z_keydown: function(app){
+    this.playerObj.transferState("swordAttack1");
   },
   // xキー
   x_keydown: function(app){
@@ -441,7 +454,6 @@ phina.define('PlayerState2', {
   },
 
 });
-
 
 
 /*****************************************************/
@@ -501,6 +513,7 @@ phina.define('PlayerState3', {
   },
   // zキー
   z_keydown: function(app){
+    this.playerObj.transferState("swordAttack1");
   },
   // xキー
   x_keydown: function(app){
@@ -802,6 +815,279 @@ phina.define('PlayerState7', {
   },
   // shiftキーアップ
   shift_keyup: function(app){
+  },
+
+});
+
+/*****************************************************/
+// State08 : 剣攻撃1ステート
+/*****************************************************/
+phina.define('PlayerState8', {
+  superClass: 'PlayerStateParent',
+
+  init: function(playerObj) {
+    this.superInit(playerObj);
+    this.name = "swordAttack1";
+    this._stateEndCnt = 0;
+    this._nextAttackFlg = 0;
+    this._zKeyPushCnt=0;
+  },
+
+  // 更新処理
+  update: function(app){
+    this._stateEndCnt++;
+    if(this._stateEndCnt==20){
+      this._standEndCnt=0;
+      if(this._nextAttackFlg == 1){
+        this.playerObj.transferState("swordAttack2");
+      }else{
+        this.playerObj.transferState("walk");
+      }
+      console.log("PlayerState : " + "Leave SwordAttack1State");
+
+    }
+  },
+
+  // ステート遷移時のpre実行処理
+  preFunction: function(){
+    console.log("PlayerState : " + "Enter SwordAttack1State")
+    this.playerObj.animContext.transferGraphic("swordAttack1");
+    this.playerObj.speed = 2;
+  },
+
+  // ステート遷移のpos実行処理
+  posFunction: function(){
+    this._stateEndCnt = 0;
+    this._nextAttackFlg = 0;
+    this._zKeyPushCnt=0;
+  },
+  // zキー
+  z_key: function(app){
+    // 10F以降なら攻撃2確定
+    if(this._stateEndCnt >= 10){
+      this._nextAttackFlg = 1;
+    }
+    // 10F前なら3Fで確定
+    if(this._stateEndCnt < 10){
+      this._zKeyPushCnt++;
+    }
+    if(this._zKeyPushCnt > 3){
+      this._nextAttackFlg = 1;
+    }    
+  },
+  z_keydown: function(app){
+  },
+  // 何も押されない
+  free_key:function(app){
+  },
+  // upキー
+  up_key:function(app){
+    this.playerObj.Move_Up();
+  },
+  // downキー
+  down_key:function(app){
+    this.playerObj.Move_Down();
+  },
+  // leftキー
+  left_key:function(app){
+    this.playerObj.Move_Left();
+  },
+  // rightキー
+  right_key:function(app){
+    this.playerObj.Move_Right();
+  },
+
+});
+
+/*****************************************************/
+// State08 : 剣攻撃2ステート
+/*****************************************************/
+phina.define('PlayerState9', {
+  superClass: 'PlayerStateParent',
+
+  init: function(playerObj) {
+    this.superInit(playerObj);
+    this.name = "swordAttack2";
+    this._stateEndCnt = 0;
+    this._nextAttackFlg = 0;
+    this._zKeyPushCnt=0;    
+  },
+
+  // 更新処理
+  update: function(app){
+    this._stateEndCnt++;
+    if(this._stateEndCnt==20){
+      this._standEndCnt=0;
+      if(this._nextAttackFlg == 1){
+        this.playerObj.transferState("swordAttack3");
+      }else{
+        this.playerObj.transferState("walk");
+      }
+    }
+  },
+
+  // ステート遷移時のpre実行処理
+  preFunction: function(){
+    console.log("PlayerState : " + "Enter SwordAttack2State")
+    this.playerObj.animContext.transferGraphic("swordAttack2");
+    this.playerObj.speed = 2;
+  },
+
+  // ステート遷移のpos実行処理
+  posFunction: function(){
+    console.log("PlayerState : " + "Leave SwordAttack2State");
+    this._stateEndCnt = 0;
+    this._nextAttackFlg = 0;
+    this._zKeyPushCnt=0;
+  },
+
+  // zキー
+  z_key: function(app){
+    // 10F以降なら攻撃2確定
+    if(this._stateEndCnt >= 10){
+      this._nextAttackFlg = 1;
+    }
+    // 10F前なら3Fで確定
+    if(this._stateEndCnt < 10){
+      this._zKeyPushCnt++;
+    }
+    if(this._zKeyPushCnt > 3){
+      this._nextAttackFlg = 1;
+    }    
+  },
+  
+  // 何も押されない
+  free_key:function(app){
+  },
+  // upキー
+  up_key:function(app){
+    this.playerObj.Move_Up();
+  },
+  // downキー
+  down_key:function(app){
+    this.playerObj.Move_Down();
+  },
+  // leftキー
+  left_key:function(app){
+    this.playerObj.Move_Left();
+  },
+  // rightキー
+  right_key:function(app){
+    this.playerObj.Move_Right();
+  },
+
+});
+
+
+/*****************************************************/
+// State08 : 剣攻撃3ステート
+/*****************************************************/
+phina.define('PlayerState10', {
+  superClass: 'PlayerStateParent',
+
+  init: function(playerObj) {
+    this.superInit(playerObj);
+    this.name = "swordAttack3";
+    this._stateEndCnt = 0;
+  },
+
+  // 更新処理
+  update: function(app){
+    this._stateEndCnt++;
+    if(this._stateEndCnt==15){
+      this._standEndCnt=0;
+      this.playerObj.transferState("swordAttack4");
+    }
+  },
+
+  // ステート遷移時のpre実行処理
+  preFunction: function(){
+    console.log("PlayerState : " + "Enter SwordAttack3State")
+    this.playerObj.animContext.transferGraphic("swordAttack3");
+  },
+
+  // ステート遷移のpos実行処理
+  posFunction: function(){
+    console.log("PlayerState : " + "Leave SwordAttack3State");
+    this._stateEndCnt = 0;
+  },
+
+  // 何も押されない
+  free_key:function(app){
+  },
+  // upキー
+  up_key:function(app){
+  },
+  // downキー
+  down_key:function(app){
+  },
+  // leftキー
+  left_key:function(app){
+  },
+  // rightキー
+  right_key:function(app){
+  },
+
+});
+
+/*****************************************************/
+// State11 : 剣攻撃3ステート
+/*****************************************************/
+phina.define('PlayerState11', {
+  superClass: 'PlayerStateParent',
+
+  init: function(playerObj) {
+    this.superInit(playerObj);
+    this.name = "swordAttack4";
+    this._stateEndCnt = 0;
+  },
+
+  // 更新処理
+  update: function(app){
+    this._stateEndCnt++;
+    if(this._stateEndCnt==20){
+      this._standEndCnt=0;
+      this.playerObj.transferState("walk");
+    }
+  },
+
+  // ステート遷移時のpre実行処理
+  preFunction: function(){
+    console.log("PlayerState : " + "Enter SwordAttack4State")
+    this.playerObj.animContext.transferGraphic("swordAttack4");
+    this.playerObj.speed = 24;
+    if(this.playerObj.direction=="front"){
+      this.playerObj.y += this.playerObj.speed;
+    }else if(this.playerObj.direction=="left"){
+      this.playerObj.x -= this.playerObj.speed;
+    }else if(this.playerObj.direction=="right"){
+      this.playerObj.x += this.playerObj.speed;
+    }else{
+      this.playerObj.y -= this.playerObj.speed;
+    }
+
+  },
+
+  // ステート遷移のpos実行処理
+  posFunction: function(){
+    console.log("PlayerState : " + "Leave SwordAttack4State");
+    this._stateEndCnt = 0;
+  },
+
+  // 何も押されない
+  free_key:function(app){
+  },
+  // upキー
+  up_key:function(app){
+  },
+  // downキー
+  down_key:function(app){
+  },
+  // leftキー
+  left_key:function(app){
+  },
+  // rightキー
+  right_key:function(app){
   },
 
 });

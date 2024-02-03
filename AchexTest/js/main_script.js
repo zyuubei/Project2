@@ -19,6 +19,7 @@ var ASSETS = {
     'NormalAttack2':'./image/action/slash2.png',
     'NormalAttack3':'./image/action/fire1.png',
     'guild':'./image/other/guild2.png',
+    'swordTip':'./image/weapon/sword/swordTip.png',    
   },
 
   // スプライトシート

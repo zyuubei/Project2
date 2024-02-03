@@ -1,1 +1,0 @@
-var Animation6Right = [{"frameCnt":2,"head_px":{"x":-2,"y":1,"rotation":0},"body_px":{"x":7,"y":16,"rotation":0},"rightHand_px":{"x":12,"y":21,"rotation":0},"leftHand_px":{"x":13,"y":22,"rotation":0},"rightLeg_px":{"x":12,"y":26,"rotation":0},"leftLeg_px":{"x":10,"y":26,"rotation":0},"option1_px":{"x":-1,"y":2,"rotation":0},"option2_px":{"x":-1,"y":3,"rotation":0}}]

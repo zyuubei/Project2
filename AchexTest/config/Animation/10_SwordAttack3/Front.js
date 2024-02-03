@@ -1,0 +1,1 @@
+var SwordAttack3Front = [{"frameCnt":10,"head_px":{"x":-0.5,"y":1.5,"rotation":0},"body_px":{"x":7,"y":16.5,"rotation":0},"rightHand_px":{"x":5,"y":18,"rotation":0},"leftHand_px":{"x":18,"y":21,"rotation":0},"rightLeg_px":{"x":9,"y":26,"rotation":0},"leftLeg_px":{"x":14,"y":27,"rotation":0},"option1_px":{"x":-0.5,"y":0,"rotation":0},"option2_px":{"x":0,"y":-1.5,"rotation":0}}]
